@@ -1,19 +1,13 @@
-import random
-
-def random_email():
-    return f"test{random.randint(1000,9999)}@mail.ru"
+from helpers.helpers import GenerateData
 
 class UserData:
     
-    @staticmethod
-    def generate_valid_user():
-        return {
-            "email": f"test{random.randint(1000, 9999)}@mail.ru",
-            "password": "password123",
-            "name": "TestUser"
-        }
+    def generate_valid_user ():
+        return GenerateData.generate_valid_user()
 
-
+    def non_exist_account():
+        return GenerateData.non_exist_account()
+    
     missing_fields_users = [
         {"email": "", "password": "password", "name": "Name"},
         {"email": "test@mail.ru", "password": "", "name": "Name"},
@@ -25,9 +19,3 @@ class UserData:
     unauthorized_error = "You should be authorised"
     wrong_credentials_error = "email or password are incorrect"
 
-    @staticmethod
-    def non_exist_account():
-        return {
-            "email": f"nonexist{random.randint(1000, 9999)}@mail.ru",
-            "password": "wrongpassword"
-        }

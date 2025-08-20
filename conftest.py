@@ -1,5 +1,6 @@
 import pytest
 from methods.user_methods import UserMethods
+from methods.order_methods import OrderMethods
 
 @pytest.fixture
 def new_user():
@@ -11,11 +12,6 @@ def new_user():
 def authorized_user(new_user):
     return new_user['accessToken']
 
-import pytest
-from methods.order_methods import OrderMethods
-
 @pytest.fixture(scope="session")
 def valid_ingredients():
     return OrderMethods().get_ingredients()
-
-
